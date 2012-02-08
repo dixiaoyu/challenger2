@@ -1,0 +1,39 @@
+<script> function question() {
+	var r=confirm("Are you sure?");}
+</script>
+<div id="content" style="background-color:#DFDFDF;">
+<h2 style="background-color:#2A5388; width:657px; height:35px;">My Reservation</h2>
+ <div class="mrcontent">
+ <h4 style="background-color:#F2F2F2; width:635px; height:27px; margin:2px 5px; position:absolute; left:5px; top:45px;">REDEMPTION RESERVATION</h4>
+<form style=" overflow:auto; width:653px; height:136px; position:absolute; top:75px; margin:2px 5px;">
+ <table width="635" cellspacing="2" style="background-color:#F2F2F2; font-size: 13px;">
+  <tr style="background-color:#F8A23A; color:white;">
+    <th>Reservation</th>
+    <th>Reservation Description</th>
+    <th>Points</th>
+    <th>Date Redeem</th>
+    <th>Expiry Date</th>
+    <th>&nbsp</th>
+  </tr>
+  <% @reservations.each do |reservation| %>
+  <tr>
+    <td>00000<%= reservation.id%></td>
+    <td><%= reservation.item_desc %></td>
+    <td><%= reservation.crm_redemption_list.points_required %></td>
+    <td><%= reservation.created_on %></td>
+    <td><%= reservation.valid_until %></td>
+    <td><%= link_to "cancel", destroy_path(:id=>reservation.id, :qty=>reservation.qty_reserved), :confirm=>"Are you sure?" %></td>    
+  </tr>
+  <% end %>
+</table>
+</form>
+
+<h4 style="background-color:#F2F2F2; width:635px; height:27px; margin:2px 5px; position:absolute; left:5px; top:215px;">PURCHASE RESERVATION</h4>
+
+
+<h4 style="background-color:#F2F2F2; width:635px; height:27px; margin:2px 5px; position:absolute; left:5px; top:385px;">WORKSHOP RESERVATION</h4>
+
+<br />
+
+  </div>
+<!-- end .content --></div> 

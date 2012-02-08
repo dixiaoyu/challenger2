@@ -1,0 +1,59 @@
+<div id="content" style="background-color:#DFDFDF;">
+    <h2 style="background-color:#2A5388; width:657px; height:35px;">My Profile</h2>
+     <div class="mpcontent">
+     <h4 style="background-color:#F2F2F2; width:635px; height:27px; margin:2px 5px; position:absolute; left:5px; top:45px;">PERSONAL INFORMATION</h4>
+     <h5 style="color:#F8A23A; position:absolute; left:20px; top:80px;">Kindly fill in all the information so we can better serve you.</h5>
+  <div>  
+
+<%= form_for(@member) do |f| %>
+ 
+  <div>Member ID:<%= current_user.mbr_id %>
+  Name:<%= @member.first_name+" "+@member.last_name %></div>
+  <div>
+    Title:&nbsp;
+    <% if @member.mbr_title=="MISS"%>
+    <%   key=1 %>
+    <% elsif @member.mbr_title=="MR"%>
+    <%   key=2 %>
+    <% elsif @member.mbr_title=="MRS"%>
+    <%   key=3 %>
+    <% else @member.mbr_title=="MS"%>
+    <%   key=4 %>
+    <% end %>
+    <%= select_tag(:mbr_title, options_for_select([['MISS', 1], ['MR', 2],['MRS', 3], ['MS', 4]],key)) %>
+    
+  </div><br />
+
+  <div>
+    Email Address:&nbsp;
+    <%= f.text_field :email_addr %>
+  </div><br />
+
+  <div>
+    Contact No:&nbsp;
+    <%= f.text_field :contact_num %>
+  </div><br />
+
+  <div>
+    Date of Birth:&nbsp;
+    <%=date_select "birth","user",:start_year=>1940, :default=>{:year=>@member.birth_date.year,:month=>@member.birth_date.month,:day=>@member.birth_date.day}%>    
+  </div><br />
+  
+  <div>
+    Address:&nbsp;
+    <%= f.text_field :mbr_addr %>
+  </div><br />
+  
+  <div>
+    Deliver Address:&nbsp;
+    <%= f.text_field :delv_addr %>
+  </div><br />
+  
+  <div>
+    <%= f.submit "Update" %>
+  </div><br />
+ 
+<% end %>
+ </div>
+ </div>
+    <!-- end .content --></div>

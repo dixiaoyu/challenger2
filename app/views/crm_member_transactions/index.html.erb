@@ -1,0 +1,12 @@
+<div id="content" style="background-color:#DFDFDF;">
+    <h2 style="background-color:#2A5388; width:657px; height:35px;">My Membership</h2>
+     <div class="mrcontent">
+GRAND TOTAL POINTS: <%= %><br/>
+<%= link_to "REDEMPTION HISTORY", transaction_path(:type=>"1")%>
+<%= link_to "PURCHASE HISTORY" ,transaction_path(:type=>"2")%>
+<%= link_to "WORKSHOP HISTORY", transaction_path(:type=>"3")%><br/>
+
+<%= render "crm_member_transactions/history"%>
+
+</div>
+</div>
